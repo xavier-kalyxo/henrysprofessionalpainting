@@ -1,0 +1,19 @@
+---
+// Utils
+import { getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Images
+import landingImage from "@assets/images/hero/henrys-professional-painting-hero-exterior-commercial-painting-1920w.jpeg";
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+---
+
+<BaseLayout title="Service Areas | Painting Throughout Greater San Diego" description="Henry's Professional Painting serves La Mesa, El Cajon, Santee, Spring Valley, Chula Vista, and communities throughout Greater San Diego County." heroImage={optimizedImage}>
+	<Banner title="Service Areas" image={optimizedImage} />
+	<!-- Page content goes here -->
+	<CTA />
+</BaseLayout>

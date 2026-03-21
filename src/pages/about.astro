@@ -10,11 +10,11 @@ import SideBySide from "@components/SideBySide/SideBySide.astro";
 import CTA from "@components/CTA/CTASimple.astro";
 
 // Images
-import landingImage from "@assets/images/landing.jpg";
+import landingImage from "@assets/images/hero/henrys-professional-painting-hero-home-1920w.jpeg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="About" description="Meta description for the page" heroImage={optimizedImage}>
+<BaseLayout title="About Us | San Diego's Trusted Painters Since 1987" description="Learn about Henry's Professional Painting — a family-owned painting company serving La Mesa and Greater San Diego for over 35 years. Meet the team behind the brush." heroImage={optimizedImage}>
 	<Banner title="About Us" image={optimizedImage} />
 	<SideBySide />
 	<FAQ />

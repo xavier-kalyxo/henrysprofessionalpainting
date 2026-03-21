@@ -85,56 +85,55 @@ h6 {
 
 @media only screen and (min-width: 0em) {
 	:root {
-		// Website colors
-		--primary: #aff425;
-		--primaryLight: #7aa329;
-		--secondary: #001f3f;
-		--secondaryLight: #001f3f;
-		--headerColor: #1a1a1a;
-		--bodyTextColor: #4e4b66;
-		--bodyTextColorWhite: #fafbfc;
+		// Brand Core
+		--brand-red: #EB1A1F;
+		--brand-red-hover: #C51316;
+		--rich-black: #1C1C1C;
+		--warm-white: #F5F3F1;
+		--steel: #3D3D3D;
+		--slate: #6B6869;
+		--concrete: #E2DED9;
 
-		/* 13px - 16px */
-		--topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-		/* 31px - 49px */
-		--headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-		--bodyFontSize: 1rem;
+		// Semantic aliases (backward compat with existing components)
+		--primary: #EB1A1F;
+		--primaryLight: #C51316;
+		--secondary: #1C1C1C;
+		--secondaryLight: #3D3D3D;
+		--headerColor: #1C1C1C;
+		--bodyTextColor: #3D3D3D;
+		--bodyTextColorWhite: #F5F3F1;
+
+		// Section backgrounds
+		--bg-primary: #FFFFFF;
+		--bg-secondary: #F5F3F1;
+		--bg-dark: #1C1C1C;
+		--bg-cta: #EB1A1F;
+
+		// Typography
+		/* 12px - 14px */
+		--topperFontSize: clamp(0.75rem, 1.6vw, 0.875rem);
+		/* 26px - 48px */
+		--headerFontSize: clamp(1.625rem, 3.9vw, 3rem);
+		--bodyFontSize: 0.9375rem;
+
+		// Spacing scale
+		--space-xs: 0.5rem;
+		--space-sm: 1rem;
+		--space-md: 2rem;
+		--space-lg: 4rem;
+		--space-xl: 6rem;
+
+		// Buttons
+		--btn-radius: 3px;
+		--btn-font-size: 0.8125rem;
+		--btn-letter-spacing: 0.06em;
 
 		/* 60px - 100px top and bottom */
 		--sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
 	}
 }
 
-/*-- -------------------------- -->
-<---       Font Faces           -->
-<--- -------------------------- -*/
-
-// Grab your fonts to locally host from https://google-webfonts-helper.herokuapp.com/fonts
-
-/* roboto-regular - latin */
-@font-face {
-	font-style: normal;
-	font-family: "Roboto";
-	font-weight: 400;
-	font-display: swap;
-	src: local(""), url("/assets/fonts/roboto-v29-latin-regular.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* roboto-700 - latin */
-@font-face {
-	font-style: normal;
-	font-family: "Roboto";
-	font-weight: 700;
-	font-display: swap;
-	src: local(""), url("/assets/fonts/roboto-v29-latin-700.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* roboto-900 - latin */
-@font-face {
-	font-style: normal;
-	font-family: "Roboto";
-	font-weight: 900;
-	font-display: swap;
-	src: local(""), url("/assets/fonts/roboto-v29-latin-900.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
+/* Fonts are loaded via Astro v6 Fonts API — see astro.config.mjs */
 
 /*-- -------------------------- -->
 <---     Base Element Styles    -->
@@ -142,7 +141,7 @@ h6 {
 
 body,
 html {
-	font-family: "Roboto", Arial, sans-serif;
+	font-family: var(--font-body), -apple-system, sans-serif;
 	font-size: 100%;
 	color: var(--bodyTextColor);
 }
@@ -157,14 +156,15 @@ h3,
 h4,
 h5,
 h6 {
+	font-family: var(--font-heading), sans-serif;
 	color: var(--headerColor);
 }
 
 p,
 li,
 a {
-	font-size: (16/16rem);
-	line-height: 1.5em;
+	font-size: var(--bodyFontSize);
+	line-height: 1.65;
 }
 
 p,
@@ -185,18 +185,20 @@ button {
 
 // Text styles - can be replaced using CodeStitch's "Content Flair" Stitches
 .cs-topper {
+	font-family: var(--font-body), sans-serif;
 	font-size: var(--topperFontSize);
-	font-weight: 700;
+	font-weight: 600;
 	line-height: 1.2em;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	color: var(--secondary);
+	color: var(--brand-red);
 	display: block;
 }
 
 .cs-title {
+	font-family: var(--font-heading), sans-serif;
 	font-size: var(--headerFontSize);
-	font-weight: 900;
+	font-weight: 700;
 	line-height: 1.2em;
 	margin: 0 auto (16/16rem);
 	color: var(--headerColor);
@@ -205,7 +207,7 @@ button {
 
 .cs-text {
 	font-size: var(--bodyFontSize);
-	line-height: 1.5em;
+	line-height: 1.65;
 	width: 100%;
 	margin: 0 auto;
 	color: var(--bodyTextColor);
@@ -216,48 +218,90 @@ button {
 <--- -------------------------- -*/
 
 @media only screen and (min-width: 0em) {
-	// Button - can be replaced using CodeStitch's "Button" Stitches
+	// Brand button base
 	.cs-button-solid {
-		font-size: (16/16rem);
-		font-weight: bold;
-		line-height: (50/16em);
+		font-family: var(--font-body), sans-serif;
+		font-size: var(--btn-font-size);
+		font-weight: 600;
+		line-height: 1;
 		text-align: center;
 		text-transform: uppercase;
 		text-decoration: none;
-		width: auto;
-		height: (50/16rem);
-		padding: 0 (30/16rem);
-
-		// Transition Properties
-		color: #000;
+		letter-spacing: var(--btn-letter-spacing);
+		padding: 10px 22px;
+		border-radius: var(--btn-radius);
+		color: #fff;
 		background-color: var(--primary);
+		border: none;
 		display: inline-block;
 		position: relative;
 		z-index: 1;
-		transition: color 0.3s;
-		transition-delay: 0.1s;
+		box-sizing: border-box;
+
+		&:before {
+			content: "";
+			position: absolute;
+			height: 100%;
+			width: 0%;
+			background: #000;
+			opacity: 1;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			border-radius: var(--btn-radius);
+			transition: width 0.3s;
+		}
 
 		&:hover {
-			color: #fff;
 			&:before {
 				width: 100%;
 			}
 		}
+	}
 
-		&:before {
-			content: "";
+	.cs-button-secondary {
+		font-family: var(--font-body), sans-serif;
+		font-size: var(--btn-font-size);
+		font-weight: 600;
+		line-height: 1;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		letter-spacing: var(--btn-letter-spacing);
+		padding: 10px 22px;
+		border-radius: var(--btn-radius);
+		color: var(--rich-black);
+		background-color: transparent;
+		border: 1.5px solid var(--rich-black);
+		display: inline-block;
+		transition: background-color 0.3s, color 0.3s;
 
-			//Transition properties
-			width: 0;
-			height: 100%;
-			background-color: #000;
-			opacity: 1;
-			display: block;
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: -1;
-			transition: width 0.3s;
+		&:hover {
+			background-color: var(--rich-black);
+			color: #fff;
+		}
+	}
+
+	.cs-button-ghost {
+		font-family: var(--font-body), sans-serif;
+		font-size: var(--btn-font-size);
+		font-weight: 600;
+		line-height: 1;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		letter-spacing: var(--btn-letter-spacing);
+		padding: 10px 22px;
+		border-radius: var(--btn-radius);
+		color: var(--brand-red);
+		background-color: transparent;
+		border: 1.5px solid var(--brand-red);
+		display: inline-block;
+		transition: background-color 0.3s, color 0.3s;
+
+		&:hover {
+			background-color: var(--brand-red);
+			color: #fff;
 		}
 	}
 

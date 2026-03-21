@@ -1,0 +1,19 @@
+---
+// Utils
+import { getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Images
+import landingImage from "@assets/images/services/henrys-professional-painting-commercial-exterior-charcoal-black-storefront.jpg";
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+---
+
+<BaseLayout title="Commercial Painting Services | Offices, Retail & More" description="Professional commercial painting for offices, retail spaces, restaurants, and multi-unit buildings in San Diego. Minimal disruption, maximum impact." heroImage={optimizedImage}>
+	<Banner title="Commercial Painting" image={optimizedImage} />
+	<!-- Page content goes here -->
+	<CTA />
+</BaseLayout>

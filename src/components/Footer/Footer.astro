@@ -1,11 +1,12 @@
 ---
 // Utils
-import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import { getCurrentYear } from "@js/utils";
 
 // Data
 import { BUSINESS } from "@data/client";
 import navData from "@data/navData.json";
+import henrysLogo from "@assets/images/henrys-logo.jpg";
 
 const currentYear = getCurrentYear();
 ---
@@ -13,10 +14,20 @@ const currentYear = getCurrentYear();
 <footer id="footer">
 	<div class="container">
 		<div class="left-section">
-			<a class="logo" href="/" aria-label="Return to [Company Name] Home page">
-				<Icon name="logo-white" width="264" height="78" />
+			<a
+				class="logo"
+				href="/"
+				aria-label={`Return to ${BUSINESS.name} Home page`}
+			>
+				<Image
+					src={henrysLogo}
+					alt="Henry's Professional Painting"
+					width={200}
+				/>
 			</a>
-			<p>Extra content if you need it, if not you can delete this whole p tag. I usually do.</p>
+			<p>
+				Serving San Diego and La Mesa with quality residential and commercial painting since 1987. Licensed, insured, and bonded for your peace of mind.
+			</p>
 		</div>
 		<div class="right-section">
 			<div class="lists">
@@ -36,10 +47,22 @@ const currentYear = getCurrentYear();
 					<li>
 						<h2>Services</h2>
 					</li>
-					<li>Service1</li>
-					<li>Service2</li>
-					<li>Service4</li>
-					<li>Service5</li>
+					<li>
+						<a href="/residential-painting/interior/"
+							>Interior House Painting</a>
+					</li>
+					<li>
+						<a href="/residential-painting/exterior/"
+							>Exterior House Painting</a>
+					</li>
+					<li>
+						<a href="/commercial-painting/interior/"
+							>Interior Commercial Painting</a>
+					</li>
+					<li>
+						<a href="/commercial-painting/exterior/"
+							>Exterior Commercial Painting</a>
+					</li>
 				</ul>
 				<ul>
 					<li>
@@ -70,7 +93,9 @@ const currentYear = getCurrentYear();
 
 	<div class="credit">
 		<span>Designed and Hand Coded by</span>
-		<a href="/" target="_blank" rel="noopener">Your Company Name</a>
+		<a href="https://oui.digital" target="_blank" rel="noopener"
+			>Oui Digital</a
+		>
 		<span class="copyright"> Copyright {currentYear} - Present</span>
 	</div>
 </footer>
@@ -320,7 +345,7 @@ const currentYear = getCurrentYear();
 	@media only screen and (min-width: 0em) {
 		body.dark-mode {
 			#footer {
-				background: #061623;
+				background: #1c1c1c;
 			}
 		}
 	}

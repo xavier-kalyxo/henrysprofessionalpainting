@@ -10,12 +10,12 @@ import Banner from "@components/Banner/Banner.astro";
 import { BUSINESS } from "@data/client";
 
 // Images
-import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-import skyscraperImage from "@assets/images/gallery/skyscraper.jpg";
+import landingImage from "@assets/images/hero/henrys-professional-painting-hero-exterior-commercial-painting-1920w.jpeg";
+import skyscraperImage from "@assets/images/gallery/henrys-professional-painting-commercial-exterior-charcoal-black-storefront.jpg";
 const optimizedImage = await getImage({ src: landingImage, format: "webp" });
 ---
 
-<BaseLayout title="Contact" description="Meta description for the page" heroImage={optimizedImage}>
+<BaseLayout title="Contact Us | Get a Free Painting Estimate" description="Request a free painting estimate from Henry's Professional Painting. Call (619) 644-5570 or fill out our form. Serving La Mesa, San Diego, and surrounding areas." heroImage={optimizedImage}>
 	<Banner title="Contact" image={optimizedImage} />
 
 	<section id="cs-contact">

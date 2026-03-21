@@ -1,0 +1,297 @@
+---
+import { Image } from "astro:assets";
+import interiorResidential from "@assets/images/services/henrys-professional-painting-interior-kitchen-cabinet-painting-espresso-brown.jpg";
+import exteriorResidential from "@assets/images/services/henrys-professional-painting-residential-exterior-two-story-gray-stucco-complete.jpg";
+import interiorCommercial from "@assets/images/hero/henrys-professional-painting-hero-interior-commercial-painting-1920w.jpeg";
+import exteriorCommercial from "@assets/images/services/henrys-professional-painting-commercial-exterior-charcoal-black-storefront.jpg";
+
+const services = [
+    {
+        title: "Interior Residential Painting",
+        text: "Transform your living spaces with expert color selection, meticulous prep work, and a flawless finish you'll love.",
+        cta: "Transform Your Home",
+        href: "/residential-painting/interior-residential-painting",
+        image: interiorResidential,
+        alt: "interior residential kitchen cabinet painting with espresso brown finish",
+    },
+    {
+        title: "Exterior Residential Painting",
+        text: "Boost your curb appeal with weather-resistant paints, thorough surface preparation, and a durable finish built to last.",
+        cta: "Boost Curb Appeal",
+        href: "/residential-painting/exterior-residential-painting",
+        image: exteriorResidential,
+        alt: "exterior residential two-story home with gray stucco finish",
+    },
+    {
+        title: "Interior Commercial Painting",
+        text: "Create an inviting workspace with minimal downtime, professional-grade materials, and a polished look clients notice.",
+        cta: "Elevate Your Workplace",
+        href: "/commercial-painting/interior-commercial-painting",
+        image: interiorCommercial,
+        alt: "interior commercial painting for a professional business space",
+    },
+    {
+        title: "Exterior Commercial Painting",
+        text: "Make a lasting first impression with high-quality coatings, precise application, and a finish that reflects your brand.",
+        cta: "Impress Your Customers",
+        href: "/commercial-painting/exterior-commercial-painting",
+        image: exteriorCommercial,
+        alt: "exterior commercial storefront painting with charcoal black finish",
+    },
+];
+---
+
+<!-- ============================================ -->
+<!--                    Services                  -->
+<!-- ============================================ -->
+<section id="services-1252">
+    <div class="cs-container">
+        <div class="cs-content">
+            <div class="cs-flex-group">
+                <span class="cs-topper">Our Services</span>
+                <h2 class="cs-title">Professional Painting Services in San Diego</h2>
+            </div>
+            <p class="cs-text">
+                From residential interiors to commercial exteriors, Henry's
+                Professional Painting delivers quality craftsmanship backed by
+                decades of experience. Licensed, insured, and trusted since 1987.
+            </p>
+        </div>
+        <ul class="cs-card-group">
+            {services.map((service) => (
+                <li class="cs-item">
+                    <a href={service.href} class="cs-link">
+                        <h3 class="cs-h3">{service.title}</h3>
+                        <p class="cs-item-text">{service.text}</p>
+                    </a>
+                    <picture class="cs-item-background">
+                        <Image
+                            src={service.image}
+                            alt={service.alt}
+                            width={413}
+                            height={374}
+                            widths={[413, 826]}
+                            format="webp"
+                            loading="lazy"
+                            decoding="async"
+                            aria-hidden="true"
+                        />
+                    </picture>
+                </li>
+            ))}
+        </ul>
+    </div>
+</section>
+
+<style lang="less">
+    /*-- -------------------------- -->
+<---          Services          -->
+<--- -------------------------- -*/
+
+    /* Mobile - 360px */
+    @media only screen and (min-width: 0rem) {
+        #services-1252 {
+            padding: var(--sectionPadding);
+            position: relative;
+            z-index: 10;
+
+            .cs-container {
+                width: 100%;
+                max-width: (1280/16rem);
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: clamp(3rem, 6vw, 4rem);
+            }
+
+            .cs-content {
+                text-align: left;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cs-title {
+                max-width: 20ch;
+            }
+
+            .cs-card-group {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                /* 16px - 20px */
+                gap: clamp(1rem, 2vw, 1.25rem);
+            }
+
+            .cs-item {
+                width: 100%;
+                text-align: left;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                background-color: #000;
+                border-radius: (8/16rem);
+                overflow: hidden;
+                box-shadow: 0px 12px 80px 0px rgba(26, 26, 26, 0.08);
+                box-sizing: border-box;
+                grid-column: span 12;
+                grid-row: span 1;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-end;
+                position: relative;
+                z-index: 1;
+
+                &:hover {
+                    .cs-item-background {
+                        img {
+                            opacity: 0.4;
+                            transform: scale(1.3);
+                        }
+                    }
+
+                    .cs-h3 {
+                        color: var(--primary);
+                    }
+                }
+
+                &:before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    border: 1px solid rgba(255, 255, 255, 0.4);
+                    box-sizing: border-box;
+                    border-radius: (8/16rem);
+                    pointer-events: none;
+                    opacity: 1;
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                }
+            }
+
+            .cs-link {
+                text-decoration: none;
+                /* 125px - 236px */
+                padding: clamp(7.8125rem, 19vw, 14.75rem) (24/16rem) (24/16rem);
+            }
+
+            .cs-h3 {
+                /* 20px - 25px */
+                font-size: clamp(1.25rem, 2.5vw, 1.5625rem);
+                line-height: 1.2em;
+                font-weight: bold;
+                text-align: inherit;
+                margin: 0 0 (12/16rem) 0;
+                color: var(--bodyTextColorWhite);
+                transition: color 0.3s;
+            }
+
+            .cs-item-text {
+                /* 14px - 16px */
+                font-size: clamp(0.875rem, 1.5vw, 1rem);
+                line-height: 1.5em;
+                font-weight: 700;
+                max-width: (450/16rem);
+                margin: 0;
+                padding: 0;
+                color: var(--bodyTextColorWhite);
+            }
+
+            .cs-item-background {
+                width: 100%;
+                height: 100%;
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    background: #1a1a1a;
+                    opacity: 0.24;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    background: linear-gradient(
+                        to bottom,
+                        rgba(0, 0, 0, 0) 0%,
+                        rgba(0, 0, 0, 1) 100%
+                    );
+                    opacity: 0.4;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 2;
+                }
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    transition:
+                        transform 0.6s,
+                        opacity 0.3s;
+                }
+            }
+        }
+    }
+
+    /* Tablet - 768px */
+    @media only screen and (min-width: 48rem) {
+        #services-1252 {
+            padding-bottom: 0;
+
+            .cs-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: (48/16rem);
+            }
+
+            .cs-title {
+                margin: 0;
+            }
+
+            .cs-flex-group {
+                width: 50%;
+            }
+
+            .cs-item {
+                grid-column: span 6;
+            }
+        }
+    }
+
+    /* Desktop - 1024px */
+    @media only screen and (min-width: 64rem) {
+        #services-1252 {
+            .cs-item {
+                grid-column: span 3;
+            }
+        }
+    }
+</style>

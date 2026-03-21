@@ -5,23 +5,36 @@
     "children": []
   },
   {
-    "key": "About Us",
+    "key": "About",
     "url": "/about/",
     "children": []
   },
   {
-    "key": "Projects",
-    "url": "/projects/",
+    "key": "Services",
+    "url": "#",
     "children": [
       {
-        "key": "Project 1",
-        "url": "/projects/project-1/"
+        "key": "Interior House Painting",
+        "url": "/residential-painting/interior/"
       },
       {
-        "key": "Project 2",
-        "url": "/projects/project-2/"
+        "key": "Exterior House Painting",
+        "url": "/residential-painting/exterior/"
+      },
+      {
+        "key": "Interior Commercial Painting",
+        "url": "/commercial-painting/interior/"
+      },
+      {
+        "key": "Exterior Commercial Painting",
+        "url": "/commercial-painting/exterior/"
       }
     ]
+  },
+  {
+    "key": "FAQ",
+    "url": "/faq/",
+    "children": []
   },
   {
     "key": "Reviews",
@@ -29,8 +42,8 @@
     "children": []
   },
   {
-    "key": "Blog",
-    "url": "/blog/",
-    "children": []     
+    "key": "Contact",
+    "url": "/contact/",
+    "children": []
   }
 ]

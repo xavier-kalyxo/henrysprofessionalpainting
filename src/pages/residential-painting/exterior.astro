@@ -1,0 +1,19 @@
+---
+// Utils
+import { getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Images
+import landingImage from "@assets/images/services/henrys-professional-painting-residential-exterior-beige-stucco-two-story-home.jpg";
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+---
+
+<BaseLayout title="Exterior House Painting | Stucco, Siding & Trim" description="Boost your home's curb appeal with professional exterior painting. Henry's Professional Painting specializes in stucco, siding, and trim painting in San Diego." heroImage={optimizedImage}>
+	<Banner title="Exterior House Painting" image={optimizedImage} />
+	<!-- Page content goes here -->
+	<CTA />
+</BaseLayout>

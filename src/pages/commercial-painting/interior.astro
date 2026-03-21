@@ -1,0 +1,19 @@
+---
+// Utils
+import { getImage } from "astro:assets";
+
+// Components
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Banner from "@components/Banner/Banner.astro";
+import CTA from "@components/CTA/CTASimple.astro";
+
+// Images
+import landingImage from "@assets/images/hero/henrys-professional-painting-hero-interior-commercial-painting-1920w.jpeg";
+const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+---
+
+<BaseLayout title="Interior Commercial Painting | Offices & Retail Spaces" description="Professional interior commercial painting in San Diego. We work around your schedule to minimize downtime for offices, retail stores, and restaurants." heroImage={optimizedImage}>
+	<Banner title="Interior Commercial Painting" image={optimizedImage} />
+	<!-- Page content goes here -->
+	<CTA />
+</BaseLayout>

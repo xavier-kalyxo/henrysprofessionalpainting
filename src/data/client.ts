@@ -1,31 +1,31 @@
 // ===== SITE CONSTANTS =====
 export const SITE = {
-	title: "Code Stitch Web Designs",
-	tagline: "Professional Web Design Services",
-	description: "Code Stitch Web Designs offers top-tier web design and development services to meet all your project needs. Start exploring and contact our team for superior quality and reliability.",
+	title: "Henry's Professional Painting",
+	tagline: "Trusted Since 1987",
+	description: "Henry's Professional Painting is San Diego's trusted painting specialist for residential and commercial clients. Licensed, insured, and bonded — serving La Mesa and Greater San Diego since 1987.",
 	url: "https://www.yourwebsite.com",
-	author: "Code Stitch Team",
+	author: "Henry's Professional Painting",
 	locale: "en",
 };
 
 // ===== BUSINESS INFO =====
 export const BUSINESS = {
 	name: SITE.title,
-	email: "help@codestitch.app",
-	phoneForTel: "555-779-4407",
-	phoneFormatted: "(555) 779-4407",
+	email: "info@henrysprofessionalpainting.com",
+	phoneForTel: "619-644-5570",
+	phoneFormatted: "(619) 644-5570",
 	logo: "/assets/favicons/favicon.svg",
 	address: {
-		lineOne: "First Address Line",
-		lineTwo: "Second Address Line",
-		city: "Denver",
-		state: "CO",
-		zip: "80206",
-		mapLink: "https://goo.gl/maps/UAQn4vuGDiwv7DV39",
+		lineOne: "La Mesa",
+		lineTwo: "",
+		city: "La Mesa",
+		state: "CA",
+		zip: "91942",
+		mapLink: "https://goo.gl/maps/LaMesaCA",
 	},
 	socials: {
-		facebook: "https://www.facebook.com/",
-		instagram: "https://www.instagram.com/",
+		facebook: "https://www.facebook.com/HenrysProfessionalPainting",
+		instagram: "https://www.instagram.com/henrys_professional_painting/",
 	},
 };
 

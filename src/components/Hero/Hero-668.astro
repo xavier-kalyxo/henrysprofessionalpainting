@@ -1,0 +1,485 @@
+---
+// Utils
+import { Image } from "astro:assets";
+
+// Images
+import heroImg from "@assets/images/hero/henrys-professional-painting-hero-interior-residential-painting-1920w.jpeg";
+---
+
+<!-- ============================================ --><!--                    Hero                      --><!-- ============================================ -->
+<section id="hero-668">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 class="cs-title">Paint Your House Like A Dream Home</h1>
+            <p class="cs-text">
+                San Diego’s trusted painting professionals since 1987. Licensed,
+                insured, and bonded — delivering flawless results for
+                residential and commercial properties.
+            </p>
+            <div class="cs-button-group">
+                <a href="/contact/" class="cs-button-solid"
+                    >Get a Free Estimate</a
+                >
+                <button
+                    type="button"
+                    class="cs-button-transparent"
+                    id="video-trigger"
+                    aria-label="Watch our company video"
+                >
+                    <svg class="cs-play-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <polygon points="4,2 18,10 4,18" />
+                    </svg>
+                    Watch Video
+                </button>
+            </div>
+            <ul class="cs-stats-group">
+                <li class="cs-item">
+                    <span class="cs-desc">Rating</span>
+                    <span class="cs-number">5/5</span>
+                </li>
+                <li class="cs-item">
+                    <span class="cs-desc">Satisfaction</span>
+                    <span class="cs-number">100%</span>
+                </li>
+                <li class="cs-item">
+                    <span class="cs-desc">Years</span>
+                    <span class="cs-number">35+</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Hero Image-->
+    <picture class="cs-picture">
+        <Image
+            src={heroImg}
+            alt="Professional painting project by Henry’s Professional Painting"
+            width="862"
+            height="850"
+            loading="eager"
+            aria-hidden="true"
+        />
+    </picture>
+</section>
+
+<dialog id="video-modal" aria-label="Company video">
+    <div class="cs-modal-content">
+        <button class="cs-modal-close" type="button" aria-label="Close video">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+        <video id="hero-video" controls playsinline preload="none" width="1920" height="1080"></video>
+    </div>
+</dialog>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const trigger = document.getElementById("video-trigger");
+        const dialog = document.getElementById("video-modal") as HTMLDialogElement;
+        const video = document.getElementById("hero-video") as HTMLVideoElement;
+        const closeBtn = dialog?.querySelector(".cs-modal-close") as HTMLButtonElement;
+        if (!trigger || !dialog || !video || !closeBtn) return;
+
+        const videoSrc = "/assets/video/henrys-professional-painting.mp4";
+
+        function openModal() {
+            if (!video.querySelector("source")) {
+                const source = document.createElement("source");
+                source.src = videoSrc;
+                source.type = "video/mp4";
+                video.appendChild(source);
+                video.load();
+            }
+            dialog.showModal();
+            video.play();
+        }
+
+        function closeModal() {
+            video.pause();
+            dialog.close();
+        }
+
+        trigger.addEventListener("click", openModal);
+        closeBtn.addEventListener("click", closeModal);
+
+        dialog.addEventListener("click", (e) => {
+            if (e.target === dialog) closeModal();
+        });
+
+        dialog.addEventListener("close", () => {
+            video.pause();
+        });
+    });
+</script>
+
+<style lang="less">
+    /*-- -------------------------- -->
+<---            Hero            -->
+<--- -------------------------- -*/
+
+    /* Mobile - 360px */
+    @media only screen and (min-width: 0rem) {
+        #hero-668 {
+            /* centers button */
+            text-align: center;
+            /* 200px - 300px top - leaving extra space for the navigation */
+            /* 60px - 150px  bottom */
+            padding: clamp(12.5rem, 25.95vw, 18.75rem) (16/16rem)
+                clamp(3.75rem, 14.82vw, 9.375rem);
+            position: relative;
+            z-index: 1;
+
+            &:before {
+                /* background box */
+                content: "";
+                width: 100%;
+                height: 85%;
+                background: #fff;
+                opacity: 1;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+
+            .cs-container {
+                width: 100%;
+                max-width: (1280/16rem);
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                position: relative;
+            }
+
+            .cs-content {
+                text-align: center;
+                max-width: (630/16rem);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .cs-title {
+                /* 39px - 61px */
+                font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
+                font-weight: 900;
+                line-height: 1.2em;
+                text-align: inherit;
+                /* 16 characters wide including spaces */
+                max-width: 16ch;
+                margin: 0 0 (16/16rem) 0;
+                color: var(--headerColor);
+                position: relative;
+            }
+
+            .cs-text {
+                /* 16px - 20px */
+                font-size: clamp(1rem, 1.5vw, 1.25rem);
+                line-height: 1.5em;
+                text-align: inherit;
+                width: 100%;
+                max-width: (522/16rem);
+                margin: 0 0 (32/16rem) 0;
+                color: var(--bodyTextColor);
+                opacity: 0.8;
+            }
+
+            .cs-button-group {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: (12/16rem);
+            }
+
+            .cs-button-solid {
+                font-size: (16/16rem);
+                /* 46px - 56px */
+                line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+                text-decoration: none;
+                font-weight: 700;
+                text-align: center;
+                margin: auto;
+                color: #fff;
+                min-width: (150/16rem);
+                margin: 0;
+                padding: 0 (24/16rem);
+                background-color: var(--primary);
+                border-radius: (4/16rem);
+                display: inline-block;
+                position: relative;
+                z-index: 1;
+                /* prevents padding from adding to the width */
+                box-sizing: border-box;
+                transition: color 0.3s;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 0%;
+                    background: #000;
+                    opacity: 1;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    border-radius: (4/16rem);
+                    transition: width 0.3s;
+                }
+
+                &:hover {
+                    color: #fff;
+                    &:before {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .cs-button-transparent {
+                font-size: (16/16rem);
+                font-family: inherit;
+                /* 46px - 56px */
+                line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+                text-decoration: none;
+                font-weight: 700;
+                text-align: center;
+                margin: auto;
+                color: var(--headerColor);
+                min-width: (150/16rem);
+                margin: 0;
+                padding: 0 (24/16rem);
+                background-color: transparent;
+                border: 1px solid var(--headerColor);
+                border-radius: (4/16rem);
+                display: inline-flex;
+                align-items: center;
+                gap: (8/16rem);
+                cursor: pointer;
+                position: relative;
+                z-index: 1;
+                /* prevents padding from adding to the width */
+                box-sizing: border-box;
+                transition: color 0.3s;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 0%;
+                    background: var(--headerColor);
+                    opacity: 1;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    border-radius: (4/16rem);
+                    transition: width 0.3s;
+                }
+
+                &:hover {
+                    color: #fff;
+                    &:before {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .cs-stats-group {
+                width: 100%;
+                max-width: (522/16rem);
+                margin: 0;
+                /* 48px - 64px */
+                margin-top: clamp(3rem, 6vw, 4rem);
+                /* 48px - 64px, removed at desktop */
+                margin-bottom: clamp(3rem, 6vw, 4rem);
+                padding: 0;
+                display: flex;
+                /* changes at desktop */
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            .cs-item {
+                list-style: none;
+                /* 100px - 150px */
+                width: clamp(6.25rem, 16vw, 9.375rem);
+                height: auto;
+                border-radius: 50%;
+                border: 1px solid var(--headerColor);
+                /* makes it square - when width divided by height equals 1 - creates a square */
+                aspect-ratio: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .cs-desc {
+                /* 14px - 16px */
+                font-size: clamp(0.875rem, 2.1vw, 1rem);
+                line-height: 1.5em;
+                margin: 0;
+                color: var(--bodyTextColor);
+                opacity: 0.7;
+                display: block;
+            }
+
+            .cs-number {
+                /* 31px - 49px */
+                font-size: clamp(1.9375rem, 3.8vw, 3.0625rem);
+                line-height: 1.2em;
+                font-weight: 900;
+                color: var(--headerColor);
+                display: block;
+            }
+
+            .cs-picture {
+                width: 100%;
+                max-width: (912/16rem);
+                margin-inline: auto;
+                /* Changes at desktop */
+                height: (576/16rem);
+                overflow: hidden;
+                display: block;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    /* makes image act as a background image */
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    /* Video Modal */
+    @media only screen and (min-width: 0rem) {
+        #video-modal {
+            max-width: 100dvw;
+            max-height: 100dvh;
+            width: 100dvw;
+            height: 100dvh;
+            padding: 0;
+            border: none;
+            background: transparent;
+            overflow: hidden;
+
+            &::backdrop {
+                background: rgba(0, 0, 0, 0.85);
+            }
+
+            .cs-modal-content {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+
+            .cs-modal-close {
+                position: absolute;
+                /* 16px - 24px */
+                top: clamp(1rem, 3vw, 1.5rem);
+                right: clamp(1rem, 3vw, 1.5rem);
+                background: none;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+                z-index: 2;
+                padding: (8/16rem);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background-color 0.3s;
+
+                &:hover,
+                &:focus-visible {
+                    background-color: rgba(255, 255, 255, 0.15);
+                }
+
+                &:focus-visible {
+                    outline: 2px solid #fff;
+                    outline-offset: 2px;
+                }
+            }
+
+            #hero-video {
+                width: 90vw;
+                max-height: 80vh;
+                border-radius: (8/16rem);
+                background: #000;
+            }
+        }
+    }
+
+    /* Small Desktop - 1024px */
+    @media only screen and (min-width: 64rem) {
+        #hero-668 {
+            /* clips the background box from overflowing the section */
+            overflow: hidden;
+
+            &:before {
+                /* removed from section container and added to cs-container for easier horizontal positioning */
+                display: none;
+            }
+
+            .cs-container {
+                flex-direction: row;
+                justify-content: space-between;
+                column-gap: (100/16rem);
+
+                &:before {
+                    /* background box */
+                    content: "";
+                    width: 100vw;
+                    height: 300%;
+                    background: #fff;
+                    opacity: 1;
+                    position: absolute;
+                    display: block;
+                    top: 50%;
+                    /* 200px - 305px, positioning it off the right edge of the container which has a fixed width */
+                    right: clamp(12.5rem, 20vw, 19.0625rem);
+                    z-index: -1;
+                    transform: translateY(-50%);
+                }
+            }
+
+            .cs-content {
+                text-align: left;
+                width: 53%;
+                /* prevents flex-box from squishing it */
+                flex: none;
+                align-items: flex-start;
+            }
+
+            .cs-stats-group {
+                margin-bottom: 0;
+                justify-content: space-between;
+            }
+
+            .cs-picture {
+                width: 50vw;
+                max-width: 100%;
+                /* 714px - 800px */
+                height: clamp(44.625rem, 60vw, 50rem);
+                /* push 100px left of that center line from the left property. this ensures it always stays exactly 100px right of the center line and won't move */
+                margin-left: (100/16rem);
+                position: absolute;
+                bottom: 0;
+                /* send the left edge of the element to line up at the center of the screen */
+                left: 50%;
+            }
+        }
+    }
+</style>
